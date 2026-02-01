@@ -127,11 +127,8 @@ print(medias_barrios)
 resultado_anova <- aov(Square.Meters ~ Neighbourhood, data = df_madrid)
 
 summary(resultado_anova)
+#He utilizado un test ANOVA. El p-valor obtenido 2.21e-06 es significativamente inferior a 0.05, por lo que rechazamos la hipótesis nula y confirmamos que el barrio influye en el tamaño.
 
-```
-
-```{r}
-#Existe una diferencia estadísticamente significativa entre los barrios
 ```
 
 ```         
