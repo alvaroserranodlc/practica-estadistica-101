@@ -67,12 +67,11 @@ print(paste("El porcentaje de NAs es del", round(porcentaje_nas, 2), "%"))
 # 1. Contamos cuántos NO son NA (el grupo de control)
 total_no_nas <- sum(!is.na(df_madrid$Square.Meters))
 
-# 2. IMPORTANTE: Buscamos los ceros en la COLUMNA, no en la variable anterior
-# Filtramos los que no son NA y de esos contamos los que son 0
+# 2. Filtramos los que no son NA y de esos contamos los que son 0
 solo_datos <- df_madrid$Square.Meters[!is.na(df_madrid$Square.Meters)]
 total_ceros <- sum(solo_datos == 0)
 
-# 3. Ahora sí, calculamos el porcentaje
+# 3. Calculamos el porcentaje
 porcentaje_ceros <- (total_ceros / total_no_nas) * 100
 
 print(paste("El porcentaje de apartamentos que tienen 0 metros cuadrados es", round(porcentaje_ceros, 2), "%"))
@@ -179,8 +178,6 @@ cluster_barrios <- hclust(dist_objeto, method = "complete")
 # 5. DIBUJAMOS EL DENDROGRAMA 
 pdf("Dendrograma_Pvalores.pdf", width = 15, height = 12)
 par(mar = c(5, 2, 4, 15))
-
-# Dibujamos
 dend <- as.dendrogram(cluster_barrios)
 plot(dend, 
      horiz = TRUE, 
@@ -191,7 +188,6 @@ plot(dend,
 # Cerramos el PDF
 invisible(dev.off())
 
-# 6. Versión rápida para ver en pantalla (por si acaso)
 plot(cluster_barrios, main = "dendrograma", cex = 0.6)
 ```
 
@@ -201,7 +197,7 @@ plot(cluster_barrios, main = "dendrograma", cex = 0.6)
 
 ```{r}
 # 1. Definimos el punto de corte (h)
-# 0.8 es un estándar sólido: separa lo que es significativamente diferente
+# 0.8 como estándar
 h_corte <- 0.8 
 
 # 2. Dibujamos el dendrograma con una línea roja que marque el corte
